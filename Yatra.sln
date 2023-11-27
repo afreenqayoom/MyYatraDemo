@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yatra", "Yatra\Yatra.csproj", "{945EB6E9-3A50-4CEB-B403-55A1AE14A74B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{945EB6E9-3A50-4CEB-B403-55A1AE14A74B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945EB6E9-3A50-4CEB-B403-55A1AE14A74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945EB6E9-3A50-4CEB-B403-55A1AE14A74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945EB6E9-3A50-4CEB-B403-55A1AE14A74B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {872CCED7-8137-45F9-BCB9-F75A6FAC72A8}
+	EndGlobalSection
+EndGlobal

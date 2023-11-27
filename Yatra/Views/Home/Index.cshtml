@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@section scripts {
+    <script>
+        $(function () {
+            $("#departdate").datepicker();
+        });
+    </script>
+}
+
+<div class="hidden md:block w-full">
+    <div class="w-full h-[350px] relative">
+        <img class="w-full h-[350px]" src="https://tripai.io/images/new-banner.jpg" />
+
+        <div class="absolute bottom-0 left-0">
+            <img class="w-full" src="https://tripai.io/images/banner-bottom.PNG" />
+        </div>
+    </div>
+
+
+</div>
+<form>
+    <section class="wrapper w-full h-full flex flex-wrap justify-between bg-white p-5 pt-0 mt-20 md:mt-2 ">
+
+        <div class="flex flex-[100%] md:flex-[475px] p-2">
+            <div class=" w-full md:w-[450px] p-[8px] border box-border rounded-[6px] shadow-[0_0_25px_rgba(0,0,0,.3)] transition-all duration-75 ease-linear">
+                <div class="container flex flex-col relative w-full h-full justify-start font-semibold">
+                    <h1 class="main-heading text-xl font-medium tracking-wide text-red-500 p-2">
+                        Book Flights, Hotels and
+                        Holiday Packages
+                    </h1>
+                    <span class="text-red-500 text-sm text-center p-2 ml-2 mb-2 font-medium border border-red-500 rounded w-32">ONE-WAY</span>
+                    <div class="input-container flex mt-4 justify-between w-full flex-wrap font-semibold">
+                        <div class="relative  pl-2 w-full md:w-[40%]">
+                            <select id="departfrom" class="selectpicker border-b w-full font-semibold p-1 focus:outline-none focus:border-red-600  focus:border-b-2 transition-colors  border-gray-500  peer" data-live-search="true">
+                                <option data-tokens="DEL">New Delhi(DEL)</option>
+                                <option data-tokens="SXR">Srinagar(SXR)</option>
+                                <option data-tokens="MUM">Mumbai(MUM)</option>
+                            </select>
+
+                           <!-- <input id="departfrom" required type="text"
+                                   class="border-b w-full font-semibold p-1 focus:outline-none focus:border-red-600  focus:border-b-2 transition-colors  border-gray-500  peer"
+                                   autocomplete="off" />-->
+                            <label for="departfrom"
+                                   class="absolute top-1 left-2 text-lg text-black-500 cursor-text peer-focus:text-xs peer-valid:text-xs peer-focus:-top-4 peer-valid:-top-4 peer-valid:text-red-600  peer-focus:text-red-600 transition-all">
+                                Depart
+                                From
+                            </label>
+                        </div>
+
+                        <span class="text-red-500 text-lg text-center w-[40px] md:w-[10%] m-1 font-medium border-2 border-red-500 rounded-full ">
+
+                            <i class="fa-solid fa-arrow-up-right-dots"></i>
+                        </span>
+
+                        <div class="relative pr-2 w-full md:w-[40%]">
+                            <select id="departto" class="selectpicker border-b w-full font-semibold p-1 focus:outline-none focus:border-red-600  focus:border-b-2 transition-colors  border-gray-500  peer" data-live-search="true">
+                                <option data-tokens="DEL">New Delhi(DEL)</option>
+                                <option data-tokens="SXR">Srinagar(SXR)</option>
+                                <option data-tokens="MUM">Mumbai(MUM)</option>
+                            </select>
+                           <!-- <input id="goingto" required type="text"
+                                   class="border-b w-full p-1 focus:outline-none focus:border-red-600  focus:border-b-2 transition-colors  border-gray-500 font-semibold peer"
+                                   autocomplete="off" />-->
+                            <label for="goingto"
+                                   class="absolute top-1 left-2 text-lg text-black-500 cursor-text peer-focus:text-xs peer-valid:text-xs peer-focus:-top-4 peer-valid:-top-4 peer-valid:text-red-600  peer-focus:text-red-600 transition-all">
+                                Going
+                                To
+                            </label>
+                        </div>
+                    </div>
+                    <div class="w-full flex relative mt-6 mr-1 pl-2 pr-2">
+
+                        
+                        <input id="departdate" type="text" required 
+                               class="border-b w-full p-1 w focus:outline-none focus:border-red-600  focus:border-b-2 transition-colors  border-gray-500 font-semibold peer"
+                               />
+                        <label for="departdate"
+                               class="absolute top-1 left-2 text-lg text-black-500 cursor-text peer-focus:text-xs peer-valid:text-xs peer-focus:-top-4 peer-valid:-top-4 peer-focus:text-red-600 peer-valid:text-red-600 transition-all">
+                            Departure
+                            Date
+                        </label>
+                    </div>
+                    <div class="relative  pl-2 w-full mt-6 mr-1 pr-2">
+                        <input id="travellers" required type="number"
+                               class="border-b w-full font-semibold p-1 focus:outline-none focus:border-red-600  focus:border-b-2 transition-colors  border-gray-500  peer"
+                               autocomplete="off" />
+                        <label for="travellers"
+                               class="absolute top-1 left-2 text-lg text-black-500 cursor-text peer-focus:text-xs peer-valid:text-xs peer-focus:-top-4 peer-valid:-top-4 peer-valid:text-red-600  peer-focus:text-red-600 transition-all">
+                            Number of Travellers
+                        </label>
+                    </div>
+                    <div class="flex  w-full justify-center relative mt-6">
+                        <button class="bg-red-600 text-white tracking-wider hover:bg-red-500 w-[150px] py-2 rounded-md" type="submit" asp-controller="Home" asp-action="Flights">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col justify-between basis-full md:basis-[calc(100%-475px)] h-64 p-5 pt-0">
+            <div class="w-full m-2">
+                <img src="https://www.yatra.com/ythomepagecms/media/imagemanager/2023/Nov/672c88d168356ba036a3311d31c5ce56.jpg"
+                     alt="banner">
+            </div>
+            <div class="w-full m-2">
+                <img src="https://www.yatra.com/ythomepagecms/media/banner/2023/Nov/6f2911ade94a0320b854357da8baa6ea.jpg"
+                     alt="banner">
+            </div>
+
+
+        </div>
+    </section>
+
+</form>
+
