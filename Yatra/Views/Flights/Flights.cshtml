@@ -1,0 +1,135 @@
+﻿@model Yatra.Models.FlightsViewModel
+@{
+    ViewData["Title"] = "Flights";
+}
+@section scripts {
+    <script>
+        $(function () {
+            $("#departdate").datepicker({
+                dateFormat: 'dd-mm-yy',
+               
+            });
+        });
+    </script>
+};
+
+
+
+<div class="hidden md:flex md:items-baseline mt-[61px] md:justify-between md:w-full md:h-[75px] md:bg-gradient-to-r from-[#b7243a] to-[#43264e] p-[6px] text-white ">
+    <div class="w-[60px]  text-4xl p-[10px]"><i class="fa-solid fa-plane"></i></div>
+    <div class=" w-[250px] relative p-[10px] ">
+            <input id="departfrom" disabled type="text" value="@(Model?.SearchFlightViewModel?.DepartFrom ?? "")"
+               class="border-b w-full bg-transparent font-bold text-xl p-1 outline-none border-white" />
+        <label for="departfrom" class="absolute -top-2 left-2 text-xs">
+            Depart
+            From
+        </label>
+    </div>
+    <i class="fa-solid fa-arrow-right p-5px text-2xl w-10"></i>
+    <div class=" w-[250px] relative p-[10px] ">
+            <input id="departto" disabled type="text" value="@(Model?.SearchFlightViewModel?.DepartTo ?? "")"
+               class="border-b w-full bg-transparent font-bold text-xl p-1 outline-none border-white" />
+        <label for="departfrom" class="absolute -top-2 left-2 text-xs">
+            Depart
+            To
+        </label>
+    </div>
+    <div class=" w-[250px] relative p-[10px] ">
+        <input id="departdate" disabled type="text" value="@((Model?.SearchFlightViewModel?.DepartDate != null) ? Model.SearchFlightViewModel.DepartDate : "")"
+               class="border-b w-full bg-transparent font-bold text-xl p-1 outline-none border-white" />
+       
+       <!-- <input id="departdate" disabled type="text" value="@((Model?.SearchFlightViewModel?.DepartDate != null) ? Model.SearchFlightViewModel.DepartDate: "")"
+                   class="border-b w-full bg-transparent font-bold text-xl p-1 outline-none border-white" />-->
+        <label for="departdate" class="absolute -top-2 left-2 text-xs">
+            Dated
+        </label>
+    </div>
+    <div class=" w-[250px] relative p-[10px] ">
+            <input id="traveller" disabled type="text" value="@(Model?.SearchFlightViewModel?.TravellerCount ?? 1)"
+               class="border-b w-full bg-transparent font-bold text-xl p-1 outline-none border-white" />
+        <label for="traveller" class="absolute -top-2 left-2 text-xs">
+            Traveller(s)
+        </label>
+    </div>
+</div>
+<div class="w-full flex flex-col items-center justify-between p-5 sm:mt-[30px] max-sm:p-2 md:mt-[70px]">
+
+
+
+    <!---->
+      @foreach (var flight in Model?.Flights ?? Enumerable.Empty<Yatra.Models.Domain.Flights>())
+        {
+            <form method="post" asp-controller="Traveller" asp-action="Details">
+    <div class="flex flex-col max-sm:w-[100%] sm:w-[90%] md:w-[650px] justify-between pb-2 mt-[40px] bg-white border box-border rounded-[6px] shadow-[0_0_25px_rgba(0,0,0,.3)] transition-all duration-75 ease-linear">
+        <div class="heading flex w-full border-b border-[#e2e2e2]">
+            <div class=" flex items-center bg-[#fde5e5] py-[6px] px-[6px]">
+                <span class="bg-green-600 m-1 text-xs text-white rounded-sm py-[2px] px-[3px]">Deal</span>
+                <span class="headingText text-xs">
+                    Avail Flat 12% OFF upto Rs.1800 on CITI Bank No Cost EMI. Use
+                    promo code - YRCITIEMI
+                </span>
+            </div>
+        </div>
+
+        <div class="flex w-[100%] p-4 max-md:p-3">
+            <div class="flinfo flex text-left pr-2">
+                <div class="h-[28px] w-[28px] rounded bg-[url('https://www.yatra.com/content/b2c-cdn/airline-logo-cdn/resources/images/DFL.png?version=202202031210')] bg-[length:280px_56px]
+    @(string.Equals(flight.FlightName, "Vistara", StringComparison.OrdinalIgnoreCase) ? "bg-[-168px_0px]":
+      string.Equals(flight.FlightName, "IndiGo", StringComparison.OrdinalIgnoreCase) ? "bg-[-56px_0px]":
+      string.Equals(flight.FlightName, "AirIndia", StringComparison.OrdinalIgnoreCase) ? "bg-[-84px_0px]":
+      string.Equals(flight.FlightName, "AirIndia Express", StringComparison.OrdinalIgnoreCase) ? "bg-[-28px_-28px]":
+      string.Equals(flight.FlightName, "SpiceJet", StringComparison.OrdinalIgnoreCase) ? "bg-[-140px_0px]":
+      "bg-[0px_0px]")">
+                
+                </div>
+                <div class="fname flex flex-col pl-2">
+                            <input type="hidden" name="FlightId" value="@flight.FlightID" />
+                    <span class="max-sm:hidden font-medium text-lg">@flight.FlightName</span>
+                            <span class="max-sm:hidden text-xs p-[2px] text-gray-400">@flight.FlightCode</span>
+                </div>
+
+            </div>
+            <div class="flex">
+                <div class="fltime">
+                    <div class="flex flex-col">
+                                <span class="sm:text-xs md:text-xl font-semibold">@flight.DepartureTime.ToString("HH:mm")</span>
+                        <span class="text-xs text-gray-400">@flight.FlightFrom</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right p-2 text-xl w-10"></i>
+                <div class="fltime flex">
+                    <div class="flex flex-col">
+                                <span class="sm:text-xs md:text-xl align-top font-semibold">@flight.ArrivalTime.ToString("HH:mm")</span>
+                        <span class="text-xs text-gray-400">@flight.FlightTo</span>
+                    </div>
+                </div>
+                <span class=" text-gray-500 p-2">|</span>
+                <div class="tottime flex">
+                    <div class="flex flex-col">
+                        <span class="sm:text-xs md:text-xl align-top font-medium">@flight.Duration</span>
+                                <span class="text-xs text-gray-400"> @(flight.Stops == 0 ? "Non Stop" : $"{flight.Stops} Stop{(flight.Stops > 1 ? "s" : "")}")</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end text-center items-start grow max-sm:flex-col max-sm:items-end">
+                <span class="text-lg font-bold pl-1 mr-4"><i class="fa-solid fa-indian-rupee-sign tracking-widest mt-[6px] p-[2px]"></i>@flight.Price</span>
+                <button class="bg-red-600 text-white tracking-wider hover:bg-red-500 max-md:w-[100px] py-1 rounded-md md:p-2"
+                        type="submit">
+                    Book Now
+                </button>
+            </div>
+
+        </div>
+        <div class="flex justify-end text-gray-400 text-sm">
+                    <span class="grow text-left ml-[24px]">@flight.FlightDate.ToShortDateString()</span>
+                    <span class="mr-1">
+                        @Html.Raw(flight.Meals ? "<i class='fa-solid fa-utensils'></i> Free Meal |":"")
+                        </span>
+            <span class="mr-2">Emissions: @flight.Emmisions Kg CO<sub>2</sub></span>
+        </div>
+    </div>
+             </form>
+        }
+       
+</div>

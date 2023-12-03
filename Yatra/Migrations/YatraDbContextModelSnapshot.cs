@@ -22,15 +22,70 @@ namespace Yatra.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Yatra.Models.Domain.Flights", b =>
+                {
+                    b.Property<string>("FlightID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ArrivalTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DepartureTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Emmisions")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FlightCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FlightDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FlightFrom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FlightName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FlightTo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Meals")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Stops")
+                        .HasColumnType("int");
+
+                    b.HasKey("FlightID");
+
+                    b.ToTable("Flights");
+                });
+
             modelBuilder.Entity("Yatra.Models.Domain.Traveller", b =>
                 {
-                    b.Property<Guid>("FlightId")
+                    b.Property<Guid>("TravellerID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FlightID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Lname")
                         .IsRequired()
@@ -44,9 +99,22 @@ namespace Yatra.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("FlightId");
+                    b.HasKey("TravellerID");
+
+                    b.HasIndex("FlightID");
 
                     b.ToTable("Travellers");
+                });
+
+            modelBuilder.Entity("Yatra.Models.Domain.Traveller", b =>
+                {
+                    b.HasOne("Yatra.Models.Domain.Flights", "Flight")
+                        .WithMany()
+                        .HasForeignKey("FlightID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
                 });
 #pragma warning restore 612, 618
         }

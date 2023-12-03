@@ -9,5 +9,6 @@ namespace Yatra.Data
         {
         }
         public DbSet<Traveller> Travellers { get; set; }
+        public DbSet<Flights> Flights { get; set; }
     }
 }

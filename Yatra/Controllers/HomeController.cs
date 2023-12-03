@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Yatra.Data;
 using Yatra.Models;
 
 namespace Yatra.Controllers
@@ -17,18 +18,7 @@ namespace Yatra.Controllers
         {
             return View();
         }
-
-        public IActionResult Flights()
-        {
-            return View();
-        }
-
-      
-        public IActionResult Details()
-        {
-            return View();
-        }
-
+    
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

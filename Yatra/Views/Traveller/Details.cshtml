@@ -1,0 +1,60 @@
+﻿@model Yatra.Models.BookingViewModel
+@{
+
+    int travellerCount = int.Parse(TempData["TravellerCount"]?.ToString()!)!;
+}
+<form method="post" asp-controller="Traveller" asp-action="ConfirmBooking">
+<div class="bg-gray-200 mt-[61px]">
+    <div class="flex w-full h-full items-center justify-center">
+        <div class="flex flex-col w-[710px] p-[10px] items-center justify-center">
+            <div class="flex w-full mt-10 justify-start items-center py-2 px-2 text-[1.429rem]">
+                <i class="fa-solid fa-user-plus bg-gradient-to-r from-[#43264e] to-[#ea2331] bg-clip-text text-transparent p-1"></i>
+                <span class="bg-gradient-to-r from-[#43264e] to-[#ea2331] bg-clip-text text-transparent p-1 font-normal">Enter Traveller Details</span>
+
+            </div>
+            <div class="flex flex-col w-full mb-8 p-3 border box-border rounded-[6px] shadow-[0_0_25px_rgba(0,0,0,.3)] bg-white">
+                <div class="flex max-sm:flex-col px-2 py-3 justify-evenly">
+                    <div class="p-2 text-sm font-medium sm:text-right md:text-left md:w-[113px]">
+                        Contact Details
+                    </div>
+                    <div class="p-2">
+                        <input type="email" placeholder="Email ID" asp-for="Email" required class="md:w-[250px] max-sm:w-full border p-1 rounded-sm focus:outline-none border-gray-400 focus:border-b-2 focus:border-black" />
+                    </div>
+                    <div class="p-2">
+                        <input type="text" maxlength="10" asp-for="Mobileno" placeholder="Mobile Number" required class="md:w-[250px] max-sm:w-full border p-1 rounded-sm focus:outline-none border-gray-400 focus:border-b-2 focus:border-black" />
+                    </div>
+
+                </div>
+                <!---->
+                <div class="flex flex-col px-2 pl-16 py-3 ">
+                    <div class="p-2  text-lg font-semibold ">
+                        Traveller Information
+                    </div>
+                    <div class="p-2 text-sm font-normal text-left">
+                        <span class="bg-yellow-100 p-1">Important Note:</span>
+                        Please ensure that the names of the passengers on the travel documents is the same as on their government issued identity proof.
+                    </div>
+                </div>
+                @foreach (var i in Enumerable.Range(0, travellerCount))
+                {
+                <div class="flex max-sm:flex-col px-2 py-3 justify-evenly">
+                    <div class="p-2 text-sm font-medium sm:text-right md:text-left md:w-[113px]">
+                        Traveller @(i+1)
+                    </div>
+                    <div class="p-2">
+                        <input type="text" placeholder="First & Middle Name" asp-for="Name[i]" required class="md:w-[250px] max-sm:w-full border p-1 rounded-sm focus:outline-none border-gray-400 focus:border-b-2 focus:border-black" />
+                    </div>
+                    <div class="p-2">
+                        <input type="text" placeholder="Last Name" required asp-for="Lname[i]" class="md:w-[250px] max-sm:w-full border p-1 rounded-sm focus:outline-none border-gray-400 focus:border-b-2 focus:border-black" />
+                    </div>
+
+                </div>
+                }
+                <div class="flex justify-center items-center py-2">
+                    <button class="bg-red-600 text-white font-medium tracking-wider border hover:bg-red-400 transition-all ease-linear w-[150px] py-2 rounded-md" type="submit">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

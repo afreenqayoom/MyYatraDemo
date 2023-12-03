@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" integrity="sha512-lvdq1fIyCp6HMWx1SVzXvGC4jqlX3e7Xm7aCBrhj5F1WdWoLe0dBzU0Sy10sheZYSkJpJcboMNO/4Qz1nJNxfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header class="fixed top-0 left-0 w-full shadow sm:bg-white md:bg-transparent z-[999]">
+    <header class="fixed top-0 left-0 w-full shadow max-sm:bg-white md:bg-transparent z-[999]">
         <nav>
             <div class="container md:flex items-center justify-between text-red-600">
                 <h1 class="pl-4 py-2 text-xl font-bold text-red-600">
@@ -35,13 +35,13 @@
                     <div class="w-5 h-1 bg-gray-600 group-hover:bg-white"></div>
                 </button>
 
-                <ul class="md:flex md:items-center sm:bg-white md:bg-transparent text-base font-semibold cursor-pointer
-      absolute md:static md:z-auto z-[-1] left-0 sm:w-full md:w-auto md:pl-0 sm:pl-6 md:py-0 sm:py-2  top-[-600px]  transition-all ease-in duration-500">
+                <ul class="md:flex md:items-center max-sm:bg-white md:bg-transparent text-base font-semibold cursor-pointer
+      absolute md:static md:z-auto z-[-1] left-0 w-full sm:w-full md:w-auto md:pl-0 sm:pl-6 md:py-0 sm:py-2  top-[-600px]  transition-all ease-in duration-500">
                     <li class="hover:bg-red-600 hover:text-white md:hover:rounded-full transition duration-300 md:ml-8 text-xl md:my-0 sm:my-2  py-2 px-6">
                         <a class="hover:text-white" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
                     </li>
                     <li class="hover:bg-red-600 hover:text-white md:hover:rounded-full transition duration-300 md:ml-8 text-xl md:my-0 my-2  py-2 px-6">
-                        <a class="hover:text-white" asp-area="" asp-controller="Home" asp-action="Flights">
+                        <a class="hover:text-white" asp-area="" asp-controller="Flights" asp-action="Flights">
                             Flights
                         </a>
                     </li>
